@@ -12,7 +12,7 @@ export class ProjectController {
 
     if (!req.body.name) {
       res.status(500).send({
-          error: 'no name :(',
+        error: 'no name :(',
       });
     }
 
