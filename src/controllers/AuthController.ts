@@ -14,4 +14,9 @@ export class AuthController {
     });
   }
 
+  public static logout = async (req: Request, res: Response) => {
+    req.logOut();
+    res.redirect('/');
+  }
+
 }
