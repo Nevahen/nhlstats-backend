@@ -1,5 +1,5 @@
-import { ProjectRoutes } from './ProjectRoutes';
+import { AuthRoute } from './AuthRoute';
 
 export {
-  ProjectRoutes,
+  AuthRoute,
 };

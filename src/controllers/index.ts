@@ -1,5 +1,5 @@
-import { ProjectController } from './ProjectController';
+import { AuthController } from './AuthController';
 
 export {
-  ProjectController,
+  AuthController,
 };
