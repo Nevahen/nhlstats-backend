@@ -3,7 +3,7 @@ import express from 'express';
 import session from 'express-session';
 import { localStrategy, PPDeserializeUser, PPSerializeUser } from 'middlewares/passport';
 import passport from 'passport';
-import { AuthRoute } from 'routes';
+import { AuthRoute, TeamsRoutes } from 'routes';
 
 const app = express();
 
@@ -21,5 +21,6 @@ PPSerializeUser();
 
 // Root routes
 app.use('/auth', AuthRoute);
+app.use('/teams', TeamsRoutes);
 
 export default app;
