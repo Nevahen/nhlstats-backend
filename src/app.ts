@@ -9,9 +9,10 @@ const app = express();
 
 app.set('port', process.env.PORT || 3000);
 
-if(app.get('env') === 'development') {
+if (app.get('env') === 'development') {
   app.use((req, res, next) =>  {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', req.headers.origin as string);
+    res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
   });
