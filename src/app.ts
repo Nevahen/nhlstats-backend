@@ -9,6 +9,14 @@ const app = express();
 
 app.set('port', process.env.PORT || 3000);
 
+if(app.get('env') === 'development') {
+  app.use((req, res, next) =>  {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+}
+
 // Global middlewares
 app.use(session({ secret: process.env.SESSION_SECRET }));
 app.use(bodyParser.json());
