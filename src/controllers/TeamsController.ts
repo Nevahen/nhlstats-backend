@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Team } from '../models';
+import { Team } from 'models';
 
 export class TeamsController {
 

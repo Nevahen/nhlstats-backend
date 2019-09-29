@@ -1,6 +1,6 @@
-import { Model } from 'objection';
+import { BaseModel } from 'models';
 
-export class Team extends Model {
+export class Team extends BaseModel {
 
   static tableName = 'teams';
 

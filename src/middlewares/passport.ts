@@ -1,4 +1,4 @@
-import { User } from 'models/User';
+import { User } from 'models';
 import passport from 'passport';
 import passportLocal from 'passport-local';
 

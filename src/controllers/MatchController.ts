@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Match } from '../models';
+import { Match } from 'models';
 
 export class MatchController {
 

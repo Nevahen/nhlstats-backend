@@ -1,6 +1,6 @@
-import { Model } from 'objection';
+import { BaseModel } from 'models';
 
-export class Match extends Model {
+export class Match extends BaseModel {
 
   static tableName = 'matches';
 
@@ -15,7 +15,7 @@ export class Match extends Model {
 
   static relationMappings = {
     players: {
-      relation: Model.ManyToManyRelation,
+      relation: BaseModel.ManyToManyRelation,
       modelClass: __dirname + '/User',
       join: {
         from: 'matches.id',
@@ -27,7 +27,7 @@ export class Match extends Model {
       },
     },
     events: {
-      relation: Model.HasManyRelation,
+      relation: BaseModel.HasManyRelation,
       modelClass: __dirname + '/GameEvent',
       join: {
         from: 'matches.id',

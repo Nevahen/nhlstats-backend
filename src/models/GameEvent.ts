@@ -1,7 +1,7 @@
-import { Model } from 'objection';
 import { GameEventTypes } from 'types/GameEventTypes';
+import { BaseModel } from '.';
 
-export class GameEvent extends Model {
+export class GameEvent extends BaseModel {
 
   static tableName = 'game_events';
 

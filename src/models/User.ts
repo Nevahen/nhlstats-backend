@@ -1,7 +1,8 @@
 import bcrypt from 'bcryptjs';
-import { Model } from 'objection';
 
-export class User extends Model {
+import { BaseModel } from 'models';
+
+export class User extends BaseModel {
 
   static tableName = 'users';
 
@@ -11,9 +12,11 @@ export class User extends Model {
 
   static modelPaths = [__dirname];
 
+  $protected = ['password'];
+
   static relationMappings = {
     matches: {
-      relation: Model.ManyToManyRelation,
+      relation: BaseModel.ManyToManyRelation,
       modelClass: __dirname + '/Match',
       join: {
         from: 'user.id',
