@@ -4,7 +4,7 @@ import { Match } from 'models';
 export class MatchController {
 
   public static getAll = async (req: Request, res: Response) => {
-    res.send(await Match.query());
+    res.send(await Match.query().eager('[_homeTeam, _awayTeam, players]'));
   }
 
   public static newMatch = async (req: Request, res: Response) => {

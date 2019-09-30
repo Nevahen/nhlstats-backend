@@ -34,6 +34,22 @@ export class Match extends BaseModel {
         to: 'game_events.match_id',
       },
     },
+    _homeTeam: {
+      relation: BaseModel.HasOneRelation,
+      modelClass: __dirname + '/Team',
+      join: {
+        from: 'matches.homeTeam',
+        to: 'teams.id',
+      },
+    },
+    _awayTeam: {
+      relation: BaseModel.HasOneRelation,
+      modelClass: __dirname + '/Team',
+      join: {
+        from: 'matches.awayTeam',
+        to: 'teams.id',
+      },
+    },
   };
 
   static modelPaths = [__dirname];
