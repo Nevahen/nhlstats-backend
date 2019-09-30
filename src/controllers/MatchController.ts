@@ -7,4 +7,8 @@ export class MatchController {
     res.send(await Match.query());
   }
 
+  public static newMatch = async (req: Request, res: Response) => {
+    return await Match.query().insertGraph(req.body).catch(err => console.log(err));
+  }
+
 }

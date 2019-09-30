@@ -15,4 +15,17 @@ export class GameEvent extends BaseModel {
 
   static modelPaths = [__dirname];
 
+  static pickJsonSchemaProperties = true;
+
+  static jsonSchema = {
+    type: 'object',
+    properties: {
+      match_id: { type: 'integer' },
+      period: { type: 'integer' },
+      player_id: { type: 'integer' },
+      event_type: { type: 'integer' },
+      team: { type: 'integer' },
+    },
+  };
+
 }
