@@ -5,7 +5,7 @@ export class BaseModel extends Model {
 
   $protected: string[] = [];
 
-  public toJSON = () => {
-    return omit(super.toJSON(), this.$protected);
+  public $formatJson = (json: {}) => {
+    return omit(super.$formatJson(json), this.$protected);
   }
 }
