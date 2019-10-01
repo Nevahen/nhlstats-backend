@@ -1,5 +1,5 @@
 import bodyParser from 'body-parser';
-import express from 'express';
+import express, { response } from 'express';
 import session from 'express-session';
 import passport from 'passport';
 import { AuthRoute, MatchRoutes, TeamsRoutes, UserRoutes } from 'routes';
@@ -16,9 +16,15 @@ if (app.get('env') === 'development') {
     res.header('Access-Control-Allow-Origin', req.headers.origin as string);
     res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
+    if (req.method === 'OPTIONS') {
+      return res.sendStatus(200);
+    }
+
     next();
   });
 }
+
 
 // Global middlewares
 app.use(session({
