@@ -5,6 +5,7 @@ import passport from 'passport';
 import { AuthRoute, MatchRoutes, TeamsRoutes, UserRoutes } from 'routes';
 
 import { localStrategy, PPDeserializeUser, PPSerializeUser } from './middlewares/passport';
+import { requireAuth } from './middlewares/requireAuth';
 
 const app = express();
 
@@ -36,7 +37,7 @@ PPSerializeUser();
 // Root routes
 app.use('/auth', AuthRoute);
 app.use('/teams', TeamsRoutes);
-app.use('/matches', MatchRoutes);
-app.use('/users', UserRoutes);
+app.use('/matches', requireAuth, MatchRoutes);
+app.use('/users', requireAuth, UserRoutes);
 
 export default app;
