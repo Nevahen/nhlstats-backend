@@ -25,7 +25,6 @@ if (app.get('env') === 'development') {
   });
 }
 
-
 // Global middlewares
 app.use(session({
   secret: process.env.SESSION_SECRET,

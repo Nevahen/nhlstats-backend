@@ -16,7 +16,7 @@ export class UserController {
       });
     }
 
-    if (password.lenght < 5) {
+    if (password.length < 5) {
       return res.status(400).send({
         error: 'too short password.',
       });
