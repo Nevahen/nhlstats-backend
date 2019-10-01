@@ -33,4 +33,8 @@ export class User extends BaseModel {
     return await bcrypt.compare(password, this.password);
   }
 
+  public $beforeInsert = async () => {
+    this.password = await bcrypt.hash(this.password, 14);
+  }
+
 }
