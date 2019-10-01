@@ -1,9 +1,10 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 import session from 'express-session';
-import { localStrategy, PPDeserializeUser, PPSerializeUser } from 'middlewares/passport';
 import passport from 'passport';
 import { AuthRoute, MatchRoutes, TeamsRoutes, UserRoutes } from 'routes';
+
+import { localStrategy, PPDeserializeUser, PPSerializeUser } from './middlewares/passport';
 
 const app = express();
 

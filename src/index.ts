@@ -1,3 +1,5 @@
+import 'module-alias/register';
+
 const environment = process.env.NODE_ENV || 'development';
 const configuration = require('../knexfile')[environment];
 

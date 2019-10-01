@@ -2,14 +2,20 @@
   "name": "nhlstats-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "tslint 'app/**/*.ts'",
-    "dev": "npx nodemon"
+    "dev": "npx nodemon",
+    "start": "node dist/index.js"
   },
   "author": "Nevahen",
   "license": "ISC",
+  "_moduleAliases": {
+    "controllers": "dist/controllers",
+    "routes": "dist/routes",
+    "models": "dist/models"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.0.0",
@@ -17,6 +23,7 @@
     "express-session": "^1.16.2",
     "knex": "^0.18.2",
     "lodash": "^4.17.15",
+    "module-alias": "^2.2.2",
     "mysql": "^2.17.1",
     "nodemon": "^1.19.1",
     "objection": "^1.6.9",
