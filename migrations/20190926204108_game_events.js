@@ -2,7 +2,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('game_events', t => {
       t.increments('id').primary();
-      t.integer('match_id').unsigned().index().references('id').inTable('matches').notNullable();
+      t.integer('match_id').unsigned().index().references('id').inTable('matches').notNullable().onDelete('CASCADE');
       t.integer('player_id').unsigned().index().references('id').inTable('users');
       t.integer('event_type').index().notNullable();
       t.integer('team').index().notNullable();
