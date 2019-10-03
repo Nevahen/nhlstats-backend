@@ -21,6 +21,7 @@ export class Match extends BaseModel {
         from: 'matches.id',
         through: {
           from: 'matches_users.match_id',
+          extra: ['team'],
           to: 'matches_users.player_id',
         },
         to: 'users.id',

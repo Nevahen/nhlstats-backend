@@ -11,4 +11,15 @@ export class MatchController {
     res.send(await Match.query().insertGraph(req.body).catch(err => console.log(err)));
   }
 
+  public static getMatch = async (req: Request, res: Response) => {
+    const match = await Match.query().findById(req.params.id).eager(
+      '[players,events,_homeTeam,_awayTeam]',
+    );
+    if (match) {
+      return res.send(match);
+    } else {
+      return res.sendStatus(404).send({ error: 'not found' });
+    }
+  }
+
 }
