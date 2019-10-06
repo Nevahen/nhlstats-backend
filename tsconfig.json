@@ -13,6 +13,7 @@
         "controllers/*": [".src/controllers"],
         "routes/*": [".src/routes"],
         "models/*": [".src/models"],
+        "types/*": [".src/types"]
       }
   },
   "include": [

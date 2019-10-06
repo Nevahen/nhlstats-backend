@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { pick } from 'lodash';
 import { GameEvent } from 'models';
-import { GameEventTypes } from 'types/GameEventTypes';
+import { GameEventTypes } from 'types';
 
 export class EventsController {
 

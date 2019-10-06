@@ -1,4 +1,4 @@
-import { GameEventTypes } from 'types/GameEventTypes';
+import { GameEventTypes } from 'types';
 import { BaseModel } from '.';
 
 export class GameEvent extends BaseModel {

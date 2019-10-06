@@ -15,7 +15,8 @@
   "_moduleAliases": {
     "controllers": "dist/controllers",
     "routes": "dist/routes",
-    "models": "dist/models"
+    "models": "dist/models",
+    "types": "dist/types"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
