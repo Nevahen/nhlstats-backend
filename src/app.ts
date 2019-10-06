@@ -2,7 +2,7 @@ import bodyParser from 'body-parser';
 import express, { response } from 'express';
 import session from 'express-session';
 import passport from 'passport';
-import { AuthRoute, MatchRoutes, TeamsRoutes, UserRoutes } from 'routes';
+import { AuthRoute, EventsRoutes, MatchRoutes, TeamsRoutes, UserRoutes } from 'routes';
 
 import { localStrategy, PPDeserializeUser, PPSerializeUser } from './middlewares/passport';
 import { requireAuth } from './middlewares/requireAuth';
@@ -16,6 +16,7 @@ if (app.get('env') === 'development') {
     res.header('Access-Control-Allow-Origin', req.headers.origin as string);
     res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PATCH');
 
     if (req.method === 'OPTIONS') {
       return res.sendStatus(200);
@@ -44,5 +45,6 @@ app.use('/auth', AuthRoute);
 app.use('/teams', TeamsRoutes);
 app.use('/matches', requireAuth, MatchRoutes);
 app.use('/users', requireAuth, UserRoutes);
+app.use('/events', requireAuth, EventsRoutes);
 
 export default app;
