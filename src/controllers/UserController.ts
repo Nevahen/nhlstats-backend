@@ -35,13 +35,14 @@ export class UserController {
 
   public static getUserProfile = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const user = await User.query().findById(id).eager('matches.[players,events,_homeTeam,_awayTeam]');
+    const user = await User.query().findById(id).eager('matches.[players,_homeTeam,_awayTeam]');
 
     if (!user) {
       res.status(404).send({ error: 'User not found', status: 404 });
     }
 
     const playerStats = await user.getPlayerStats();
+    user.$omit('events');
 
     const payload = {
       user,
