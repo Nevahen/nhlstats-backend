@@ -48,7 +48,7 @@ export class UserController {
     const payload = {
       user,
       stats: playerStats,
-      mostPlayed: mostPlayed[0],
+      mostPlayed,
     };
 
     res.send(payload);

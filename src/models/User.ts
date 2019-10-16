@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { BaseModel, GameEvent, Match } from 'models';
+import { BaseModel, GameEvent, Match, Team } from 'models';
 import { GameEventTypes } from 'types';
 
 export class User extends BaseModel {
@@ -112,18 +112,25 @@ export class User extends BaseModel {
   }
 
   public getMostPlayedTeam = async () => {
-  return BaseModel.knex().raw(
-    `
-      SELECT teams.id, teams.name, COUNT(teams.NAME) AS play_times FROM matches_users mu
-      LEFT JOIN matches ON mu.match_id = matches.id
-      LEFT JOIN teams ON IF(mu.team = 1, matches.homeTeam, matches.awayTeam ) = teams.id
-      WHERE player_id = :id
-      GROUP BY teams.NAME
-      ORDER BY COUNT(teams.NAME) DESC
-      LIMIT 1;`,
-    {
-      id: this.id,
-    });
-  }
+    const result = await BaseModel.knex().raw(
+      `
+        SELECT teams.id, teams.name, COUNT(teams.NAME) AS play_times FROM matches_users mu
+        LEFT JOIN matches ON mu.match_id = matches.id
+        LEFT JOIN teams ON IF(mu.team = 1, matches.homeTeam, matches.awayTeam ) = teams.id
+        WHERE player_id = :id
+        GROUP BY teams.NAME
+        ORDER BY COUNT(teams.NAME) DESC
+        LIMIT 1;`,
+      {
+        id: this.id,
+      },
+    );
 
+    const row = JSON.parse(JSON.stringify(result[0]))[0];
+    const team = await Team.query().findById(row.id);
+    return {
+      team,
+      playTimes: row.play_times,
+    };
+  }
 }
