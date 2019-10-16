@@ -111,4 +111,19 @@ export class User extends BaseModel {
     return playerStats;
   }
 
+  public getMostPlayedTeam = async () => {
+  return BaseModel.knex().raw(
+    `
+      SELECT teams.id, teams.name, COUNT(teams.NAME) AS play_times FROM matches_users mu
+      LEFT JOIN matches ON mu.match_id = matches.id
+      LEFT JOIN teams ON IF(mu.team = 1, matches.homeTeam, matches.awayTeam ) = teams.id
+      WHERE player_id = :id
+      GROUP BY teams.NAME
+      ORDER BY COUNT(teams.NAME) DESC
+      LIMIT 1;`,
+    {
+      id: this.id,
+    });
+  }
+
 }

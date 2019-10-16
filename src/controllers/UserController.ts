@@ -38,15 +38,17 @@ export class UserController {
     const user = await User.query().findById(id).eager('matches.[players,_homeTeam,_awayTeam]');
 
     if (!user) {
-      res.status(404).send({ error: 'User not found', status: 404 });
+      return res.status(404).send({ error: 'User not found', status: 404 });
     }
 
     const playerStats = await user.getPlayerStats();
+    const mostPlayed = await user.getMostPlayedTeam();
     user.$omit('events');
 
     const payload = {
       user,
       stats: playerStats,
+      mostPlayed: mostPlayed[0],
     };
 
     res.send(payload);
