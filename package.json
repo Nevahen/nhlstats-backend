@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
-    "@types/express": "^4.17.6",
+    "@types/express": "^4.17.7",
     "@types/express-session": "^1.17.0",
     "@types/lodash": "^4.14.157",
     "@types/passport": "^1.0.3",
