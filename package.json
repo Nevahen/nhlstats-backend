@@ -40,7 +40,7 @@
     "@types/lodash": "^4.14.170",
     "@types/passport": "^1.0.6",
     "@types/passport-local": "^1.0.33",
-    "tsconfig-paths": "^3.8.0",
+    "tsconfig-paths": "^3.10.1",
     "tslint": "^6.1.3"
   }
 }
