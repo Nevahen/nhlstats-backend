@@ -39,7 +39,7 @@
     "@types/express-session": "^1.17.4",
     "@types/lodash": "^4.14.171",
     "@types/passport": "^1.0.7",
-    "@types/passport-local": "^1.0.33",
+    "@types/passport-local": "^1.0.34",
     "tsconfig-paths": "^3.10.1",
     "tslint": "^6.1.3"
   }
